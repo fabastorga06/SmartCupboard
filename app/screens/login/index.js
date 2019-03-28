@@ -13,6 +13,7 @@ import {
 import backgroundImg from '../../images/loginBackground.jpg'
 import logo from '../../images/logo.png'
 import title from '../../images/title.png'
+import styles from '../../styles/styles' 
 //import Icon from 'react-native-vector-icons/Ionicons'
 
 export default class Login extends React.Component {
@@ -75,10 +76,10 @@ export default class Login extends React.Component {
 
   	render() {
     	return (
-      		<ImageBackground source={backgroundImg} style={styles.container}> 
+      		<ImageBackground source={backgroundImg} style={styles.rootcontainer}> 
     			<View style={styles.logoContainer}>
           			<Image source={logo} style={styles.logo} />
-					<Image source={title} style={styles.title} />
+					<Image source={title} style={styles.titlelogin} />
         		</View>
 
         		<View style={styles.inputContainer}>
@@ -125,66 +126,3 @@ export default class Login extends React.Component {
 	}
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: "100%",
-    height: "100%",
-	alignItems: 'center'
-  },
-  logoContainer: {
-	marginTop: 85,
-	flexDirection: 'row'
-  },
-  logo: {
-    height: 150,
-	width: 150, 
-  },
-  title : {
-	height: 190,
-	width: 190
-  },
-  inputContainer: {
-	marginTop: 10
-  },
-  input: {
-	width: 300,
-	height: 50,
-	borderRadius: 25,
-	fontSize: 18,
-	paddingLeft: 45,
-	marginHorizontal: 25,
-	backgroundColor: 'rgba(0, 0, 0, 0.35)',
-	color: 'white'
-  },
-  icon: {
-	position: 'absolute',
-	top: 25,
-	left: 37
-  }, 
-  botonEye: {
-	position: 'absolute',
-	top: 25,
-	right: 37
-  }, 
-  botonLogin: {
-	width: 300,
-	height: 85, 
-	borderRadius: 25,
-	backgroundColor: "#FFBF00",
-	justifyContent: 'center',
-	marginTop: 20
-  },
-  text: {
-	color: 'white',
-	fontSize: 20,
-	fontWeight: 'bold',
-	textAlign: 'center'
-  }, 
-  description: {
-    marginTop: 20,
-    fontSize: 16,
-    color: '#ffffff',
-    textAlign: 'center',
-  }
-});

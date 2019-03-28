@@ -1,13 +1,15 @@
 import React from 'react';
 
-import { StyleSheet, Image, FlatList, Text, View, TouchableOpacity } from 'react-native';
-import tool from '../../images/tool.png'
-import market from '../../images/market.png'
+import { Image, FlatList, ImageBackground, View, TouchableOpacity } from 'react-native';
+import tool from '../../images/tool.png';
+import market from '../../images/market.png';
+import backgroundImg from '../../images/Night_sky.jpg';
+import styles from '../../styles/styles';
 
 export default class Preview extends React.Component {
 
     static navigationOptions = {
-        title: 'SmartCupboard',
+        title: 'SMART CUPBOARD',
     };
     
     constructor(props)
@@ -26,39 +28,18 @@ export default class Preview extends React.Component {
 
     render() {
         return (
-             
+                <ImageBackground source={backgroundImg} style={styles.previewContainer}>
                 <View style={styles.MainContainer}>
                     <FlatList data={ this.state.GridViewItems }
                         renderItem={({item}) =>
-                            <TouchableOpacity style={styles.GridViewBlockStyle} 
+                            <TouchableOpacity style={styles.previewBlock} 
                                 onPress={()=> {this.props.navigation.navigate(item.navigate, {})}}>
-                                <Image source={item.image} style={styles.logo}/>
+                                <Image source={item.image} style={styles.previewLogo}/>
                             </TouchableOpacity>} numColumns={2}/>
                 </View> 
-                
+                </ImageBackground>
     );
     }
 }
 
-const styles = StyleSheet.create({
 
-logo: {
-    height: 50,
-    width: 50, 
-    justifyContent: 'center',
-},
-MainContainer:{
-    justifyContent: 'center',
-    flex:1,
-    margin: 14
-},
-GridViewBlockStyle: {
-  justifyContent: 'center',
-  flex:1,
-  alignItems: 'center',
-  height: 60,
-  margin: 5,
-  backgroundColor: '#c7d3e5'
-}
-
-});
