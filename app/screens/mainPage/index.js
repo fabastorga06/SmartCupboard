@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { StyleSheet, Image, FlatList, Text, View, Alert } from 'react-native';
+import { StyleSheet, ImageBackground, FlatList, Text, View, Alert } from 'react-native';
 
-import backgroundImage from '../../images/Night_sky.jpg'; 
+import backgroundImg from '../../images/Night_sky.jpg'; 
 
 export default class MainPage extends React.Component {
 
     static navigationOptions = {
-        title: 'MainPage',
+        title: 'SmartCupboard',
     };
     
     constructor(props)
@@ -15,16 +15,12 @@ export default class MainPage extends React.Component {
     super(props);
 
     this.state = { GridViewItems: [
-        {key: 'Atun 1 available'},
-        {key: 'Arroz'},
-        {key: 'Frijoles'},
-        {key: 'Salsa'},
-        {key: 'Salsa'},
-        {key: 'Salsa'},
-        {key: 'Salsa'},
-        {key: 'Salsa'},
-        {key: 'Salsa'},
-        {key: 'Salsa'}
+        {key: 'Atun: 1 unit available'},
+        {key: 'Arroz: 2 kg available'},
+        {key: 'Frijoles: unavailable'},
+        {key: 'Ketchup: unavailable'},
+        {key: 'Sal: unavailable'},
+
     ]}
     }
 
@@ -37,7 +33,7 @@ export default class MainPage extends React.Component {
 
     render() {
         return (
-             
+                <ImageBackground source={backgroundImg} style={styles.container}>
                 <View style={styles.MainContainer}>
                     <View style={styles.titleContainer}>
                         <Text style={styles.title}> My Products </Text>
@@ -56,6 +52,7 @@ export default class MainPage extends React.Component {
                         <Text style={styles.title} onPress={()=> {Alert.alert('hola')}}> Shopping History </Text>
                     </View>
                 </View> 
+                </ImageBackground>
                 
     );
     }
@@ -100,6 +97,7 @@ GridViewBlockStyle: {
   flex:1,
   alignItems: 'center',
   height: 60,
+  width: 300,
   margin: 5,
   backgroundColor: '#c7d3e5'
 },

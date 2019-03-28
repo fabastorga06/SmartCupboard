@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { StyleSheet, FlatList, Text, View, Alert } from 'react-native';
-
+import { StyleSheet, ImageBackground, FlatList, Text, View, Alert } from 'react-native';
+import backgroundImg from '../../images/Night_sky.jpg'; 
 
 export default class MainPage extends React.Component {
 
     static navigationOptions = {
-        title: 'List',
+        title: 'SmartCupboard',
     };
     
     constructor(props)
@@ -29,7 +29,8 @@ export default class MainPage extends React.Component {
 
     render() {
         return (
-                <View style={styles.MainContainer} backgroundColor = '#8c88e4'>
+                <ImageBackground source={backgroundImg} style={styles.container}>
+                <View style={styles.MainContainer}>
                     <View style={styles.titleContainer}>
                         <Text style={styles.title}> My Shoping List </Text>
                     </View>
@@ -41,15 +42,22 @@ export default class MainPage extends React.Component {
                                 </Text>
                             </View>} numColumns={1}/>
                     <View style={styles.buttonContainer}>
-                        <Text style={styles.title} onPress={()=> {this.props.navigation.navigate('MainPage', {})}}> Go Back </Text>
+                        <Text style={styles.title} onPress={()=> {this.props.navigation.navigate('MainPage', {})}}> Mark as completed </Text>
                     </View>
                 </View>
+                </ImageBackground>
     );
     }
 }
 
 const styles = StyleSheet.create({
 
+container: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+    alignItems: 'center',
+},
 MainContainer:{
 justifyContent: 'center',
 flex:1,
@@ -81,6 +89,7 @@ GridViewBlockStyle: {
   flex:1,
   alignItems: 'center',
   height: 60,
+  width: 300,
   margin: 5,
   backgroundColor: '#c7d3e5'
 },

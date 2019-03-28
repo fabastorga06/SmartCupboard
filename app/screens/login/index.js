@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { 
   Text,
@@ -9,21 +10,24 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import background_img from '../../images/loginBackground.jpg'
+import backgroundImg from '../../images/loginBackground.jpg'
 import logo from '../../images/logo.png'
 import title from '../../images/title.png'
-import Icon from 'react-native-vector-icons/Ionicons'
+//import Icon from 'react-native-vector-icons/Ionicons'
 
 export default class Login extends React.Component {
-    static navigationOptions = {
-        title: 'Login'
-    };
+	static navigationOptions = {
+			title: 'SMART CUPBOARD'
+	};
 
 	constructor() {
 		super();
 		this.state = {
 			showPassword: true,
-			press: false
+			press: false,
+			user: '',
+			password: '',
+			warningMessage: ''
 		}
 	}
 
@@ -39,25 +43,49 @@ export default class Login extends React.Component {
 				press: false
 			})
 		}
+	}	
+
+	_onUserChanged = event => {
+		this.setState({
+		  user: event.nativeEvent.text,
+		});
+	  };
+	
+	  _onPasswordChanged = event => {
+		this.setState({
+		  password: event.nativeEvent.text,
+		});
+	  };
+	
+	_onLoginPress = () => {
+		const user = 'Fabian';
+		const password = 'hola123';
+	
+		if (this.state.user === user && this.state.password === password) {
+			this.props.navigation.navigate('Preview', {});
+			this.setState({
+				warningMessage: '',
+				  });
+		} else {
+		 	this.setState({
+			warningMessage: 'No existe el usuario...',
+		  	});
+		}
 	}
 
   	render() {
     	return (
-      		<ImageBackground source={background_img} style={styles.container}> 
+      		<ImageBackground source={backgroundImg} style={styles.container}> 
     			<View style={styles.logoContainer}>
           			<Image source={logo} style={styles.logo} />
 					<Image source={title} style={styles.title} />
         		</View>
 
         		<View style={styles.inputContainer}>
-					<Icon 
-					name={'ios-person-outline'} 
-					size={28} 
-					color={'rgba(255, 255, 255, 0.7)'}
-					style={styles.icon}
-					/>
 					<TextInput 
 					style={styles.input}
+					value={this.state.user}
+					onChange={this._onUserChanged}
 					placeholder={'Username'}
 					placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
 					underlineColorAndroid='transparent'
@@ -65,14 +93,10 @@ export default class Login extends React.Component {
 				</View>
 
 				<View style={styles.inputContainer}>
-					<Icon 
-					name={'ios-lock-outline'} 
-					size={28} 
-					color={'rgba(255, 255, 255, 0.7)'}
-					style={styles.icon}
-					/>
 					<TextInput 
 					style={styles.input}
+					value={this.state.password}
+					onChange={this._onPasswordChanged}
 					placeholder={'Password'}
 					secureTextEntry={this.state.showPassword}
 					placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
@@ -82,16 +106,19 @@ export default class Login extends React.Component {
 					style={styles.botonEye}
 					onPress={this._showPass.bind(this)}
 					>
-						<Icon 
+					{/*	<Icon 
 						name={this.state.press == false ? 'ios-eye-outline' : 'ios-eye-off-outline'} 
 						size={26} 
-						color={'rgba(255, 255, 255, 0.7)'} />
+						color={'rgba(255, 255, 255, 0.7)'} />  
+					*/}
 					</TouchableOpacity>      
 				</View>
 
-				<TouchableOpacity style={styles.botonLogin}>
+				<TouchableOpacity style={styles.botonLogin} onPress={this._onLoginPress}>
 					<Text style={styles.text}>Login</Text>
 				</TouchableOpacity>
+
+				<Text style={styles.description}>{this.state.warningMessage}</Text>
 
 			</ImageBackground>     
 		);
@@ -106,52 +133,58 @@ const styles = StyleSheet.create({
 	alignItems: 'center'
   },
   logoContainer: {
-	marginTop: 200,
+	marginTop: 85,
 	flexDirection: 'row'
   },
   logo: {
-    height: 200,
-	width: 200, 
+    height: 150,
+	width: 150, 
   },
   title : {
-	height: 275,
-	width: 275
+	height: 190,
+	width: 190
   },
   inputContainer: {
-	  marginTop: 10
+	marginTop: 10
   },
   input: {
-	  width: 350,
-	  height: 100,
-	  borderRadius: 25,
-	  fontSize: 20,
-	  paddingLeft: 45,
-	  marginHorizontal: 25,
-	  backgroundColor: 'rgba(0, 0, 0, 0.35)',
-	  color: 'white'
+	width: 300,
+	height: 50,
+	borderRadius: 25,
+	fontSize: 18,
+	paddingLeft: 45,
+	marginHorizontal: 25,
+	backgroundColor: 'rgba(0, 0, 0, 0.35)',
+	color: 'white'
   },
   icon: {
-	  position: 'absolute',
-	  top: 25,
-	  left: 37
+	position: 'absolute',
+	top: 25,
+	left: 37
   }, 
   botonEye: {
-	  position: 'absolute',
-	  top: 25,
-	  right: 37
+	position: 'absolute',
+	top: 25,
+	right: 37
   }, 
   botonLogin: {
-	  width: 350,
-	  height: 100, 
-	  borderRadius: 25,
-	  backgroundColor: "#FFBF00",
-	  justifyContent: 'center',
-	  marginTop: 20
+	width: 300,
+	height: 85, 
+	borderRadius: 25,
+	backgroundColor: "#FFBF00",
+	justifyContent: 'center',
+	marginTop: 20
   },
   text: {
-	  color: 'white',
-	  fontSize: 28,
-	  fontWeight: 'bold',
-	  textAlign: 'center'
+	color: 'white',
+	fontSize: 20,
+	fontWeight: 'bold',
+	textAlign: 'center'
+  }, 
+  description: {
+    marginTop: 20,
+    fontSize: 16,
+    color: '#ffffff',
+    textAlign: 'center',
   }
 });
