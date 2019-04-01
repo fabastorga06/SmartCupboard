@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Image, FlatList, ImageBackground, View, TouchableOpacity } from 'react-native';
 import tool from '../../images/tool.png';
 import market from '../../images/market.png';
@@ -18,13 +17,8 @@ export default class Preview extends React.Component {
 
     this.state = { GridViewItems: [
         {key: 'Configuration', image: tool, navigate: 'Configuration' },
-        {key: 'Application', image: market, navigate: 'MainPage'},
-
-
-    ]}
+        {key: 'Application', image: market, navigate: 'MainPage'},]}
     }
-
-
 
     render() {
         return (
@@ -38,7 +32,7 @@ export default class Preview extends React.Component {
                             </TouchableOpacity>} numColumns={2}/>
                 </View> 
                 </ImageBackground>
-    );
+        );
     }
 }
 

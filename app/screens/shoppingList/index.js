@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { ImageBackground, FlatList, Text, View, Alert } from 'react-native';
 import backgroundImg from '../../images/Night_sky.jpg';
 import styles from '../../styles/styles'
@@ -17,16 +16,12 @@ export default class List extends React.Component {
     this.state = { GridViewItems: [
         {key: 'Atun: Buy 2 units, Sardimar'},
         {key: 'Arroz: Buy 1 kg, Tio Pelon'},
-        {key: 'Ketchup: Buy 1 unit, Kerns'},
-    ]}
+        {key: 'Ketchup: Buy 1 unit, Kerns'},]}
     }
 
     GetGridViewItem (item) {
-    
-    Alert.alert(item);
-
+        Alert.alert(item);
     }
-
 
     render() {
         return (
@@ -47,6 +42,6 @@ export default class List extends React.Component {
                     </View>
                 </View>
                 </ImageBackground>
-    );
+        );
     }
 }

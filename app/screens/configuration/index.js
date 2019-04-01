@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Text, FlatList, ImageBackground, View, TouchableOpacity } from 'react-native';
 import backgroundImg from '../../images/Night_sky.jpg';
 import styles from '../../styles/styles';
@@ -18,12 +17,8 @@ export default class Configuration extends React.Component {
         {key: 'Cases', navigate: 'Configuration' },
         {key: 'Brands', navigate: 'MainPage'},
         {key: 'Limits', navigate: 'MainPage'},
-        {key: 'Units', navigate: 'MainPage'},
-
-    ]}
+        {key: 'Units', navigate: 'MainPage'},]}
     }
-
-
 
     render() {
         return (
@@ -37,6 +32,6 @@ export default class Configuration extends React.Component {
                             </TouchableOpacity>} numColumns={2}/>
                 </View> 
                 </ImageBackground>
-    );
+        );
     }
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { ImageBackground, FlatList, Text, View, Alert } from 'react-native';
 import backgroundImg from '../../images/Night_sky.jpg';
 import styles from '../../styles/styles'
@@ -23,16 +22,12 @@ export default class History extends React.Component {
         {key: 'Completed: 22/12/2018'},
         {key: 'Completed: 17/12/2018'},
         {key: 'Completed: 12/12/2018'},
-        {key: 'Completed: 09/12/2018'},
-    ]}
+        {key: 'Completed: 09/12/2018'},]}
     }
 
     GetGridViewItem (item) {
-    
-    Alert.alert(item);
-
+        Alert.alert(item);
     }
-
 
     render() {
         return (
@@ -53,6 +48,6 @@ export default class History extends React.Component {
                     </View>
                 </View>
                 </ImageBackground>
-    );
+        );
     }
 }

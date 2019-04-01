@@ -1,7 +1,5 @@
 import React from 'react';
-
-import { ImageBackground, FlatList, Text, View, Alert } from 'react-native';
-
+import { ImageBackground, FlatList, Text, View, Alert, TouchableOpacity } from 'react-native';
 import backgroundImg from '../../images/Night_sky.jpg'; 
 import styles from '../../styles/styles'
 
@@ -20,17 +18,12 @@ export default class MainPage extends React.Component {
         {key: 'Arroz: 2 kg available'},
         {key: 'Frijoles: unavailable'},
         {key: 'Ketchup: unavailable'},
-        {key: 'Sal: unavailable'},
-
-    ]}
+        {key: 'Sal: unavailable'},]}
     }
 
     GetGridViewItem (item) {
-    
-    Alert.alert(item);
-
+        Alert.alert(item);
     }
-
 
     render() {
         return (
@@ -46,16 +39,17 @@ export default class MainPage extends React.Component {
                                     onPress={this.GetGridViewItem.bind(this, item.key)} > {item.key}
                                 </Text>
                             </View>} numColumns={1}/>
-                    <View style={styles.buttonContainer}>
-                        <Text style={styles.title} onPress={()=> {this.props.navigation.navigate('List', {})}}> Shopping List </Text>
-                    </View>
-                    <View style={styles.buttonContainer} >
-                        <Text style={styles.title} onPress={()=> {this.props.navigation.navigate('History', {})}}> Shopping History </Text>
-                    </View>
+                    <TouchableOpacity style={styles.buttonContainer} 
+                        onPress={()=> {this.props.navigation.navigate('List', {})}}> 
+                        <Text style={styles.title}> Shopping List </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttonContainer} 
+                        onPress={()=> {this.props.navigation.navigate('History', {})}}> 
+                        <Text style={styles.title}> Shopping History </Text>
+                    </TouchableOpacity>
                 </View> 
-                </ImageBackground>
-                
-    );
+                </ImageBackground>      
+        );
     }
 }
 
