@@ -32,12 +32,12 @@ export default StyleSheet.create({
       backgroundColor: '#00BCD4'
     },
     buttonContainer: {
+      width: 300,
+      height: 85, 
+      borderRadius: 25,
+      backgroundColor: "#00BCD4",
       justifyContent: 'center',
-      alignItems: 'center',
-      height: 40,
-      margin: 5,
-      backgroundColor: '#00BCD4',
-      borderRadius:20
+      marginTop: 20
     },
     GridViewBlock: {
       justifyContent: 'center',
@@ -46,13 +46,13 @@ export default StyleSheet.create({
       height: 60,
       width: 300,
       margin: 5,
-      backgroundColor: '#c7d3e5'
+      backgroundColor: '#97B8BF'
     },
     GridText: {
       color: '#fff',
       padding: 10,
-      fontSize: 24,
-      justifyContent: 'center',
+      fontSize: 16,
+      textAlign: 'justify'
     },
     rootcontainer: {
       flex: 1,
@@ -140,6 +140,27 @@ export default StyleSheet.create({
       height: 60,
       width: 200,
       margin: 5,
-      backgroundColor: '#c7d3e5'
+      backgroundColor: '#7E8F92'
+    },
+    header: {
+      backgroundColor: '#7E8F92',
+      textAlign: 'center',
+      padding: 10,
+      height: 60,
+	  width: 300,
+	  opacity: 0.7
+    },
+    headerText: {
+      textAlign: 'center',
+      fontSize: 24,
+      color: '#ffffff',
+	  fontWeight: '500'
+	  
+    },
+    content: {
+      padding: 20,
+	  backgroundColor: '#7E8F92',
+	  width: 300,
+	  opacity: 0.7
     }
   });
