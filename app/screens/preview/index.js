@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, FlatList, ImageBackground, View, TouchableOpacity } from 'react-native';
 import tool from '../../images/tool.png';
 import market from '../../images/market.png';
-import backgroundImg from '../../images/Night_sky.jpg';
+import backgroundImg from '../../images/screen4.jpg';
 import styles from '../../styles/styles';
 
 export default class Preview extends React.Component {

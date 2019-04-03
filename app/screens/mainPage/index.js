@@ -8,7 +8,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import Collapsible from 'react-native-collapsible';
-import backgroundImg from '../../images/screen2.jpg'; 
+import backgroundImg from '../../images/screen8.jpg'; 
 import styles from '../../styles/styles'
 
 export default class MainPage extends React.Component {

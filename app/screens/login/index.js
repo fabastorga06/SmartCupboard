@@ -60,7 +60,7 @@ export default class Login extends React.Component {
 	
 	_onLoginPress = () => {
 		const user = 'Fabian';
-		const password = 'hola123';
+		const password = 'Hola';
 	
 		if (this.state.user === user && this.state.password === password) {
 			this.props.navigation.navigate('Preview', {});

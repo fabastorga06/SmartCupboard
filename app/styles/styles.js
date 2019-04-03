@@ -46,7 +46,10 @@ export default StyleSheet.create({
       height: 60,
       width: 300,
       margin: 5,
-      backgroundColor: '#97B8BF'
+      backgroundColor: '#7E8F92',
+      opacity: 0.8,
+      borderWidth: 2,
+      borderColor: 'rgb(0, 0, 0)'
     },
     GridText: {
       color: '#fff',
@@ -101,7 +104,9 @@ export default StyleSheet.create({
       borderRadius: 25,
       backgroundColor: "#FFBF00",
       justifyContent: 'center',
-      marginTop: 20
+      marginTop: 20,
+      borderWidth: 2,
+      borderColor: 'rgb(0, 0, 0)'
     },
     text: {
       color: 'white',
@@ -119,15 +124,7 @@ export default StyleSheet.create({
       height: 50,
       width: 50, 
       justifyContent: 'center',
-    },    
-    previewBlock: {
-      justifyContent: 'center',
-      flex:1,
-      alignItems: 'center',
-      height: 60,
-      margin: 5,
-      backgroundColor: '#c7d3e5'
-    },
+    },   
     previewLogo: {
       height: 50,
       width: 50, 
@@ -140,27 +137,31 @@ export default StyleSheet.create({
       height: 60,
       width: 200,
       margin: 5,
-      backgroundColor: '#7E8F92'
+      backgroundColor: '#00BCD4',
+      opacity: 0.8,
+      borderWidth: 2,
+      borderColor: 'rgb(0, 0, 0)'
     },
     header: {
       backgroundColor: '#7E8F92',
       textAlign: 'center',
       padding: 10,
       height: 60,
-	  width: 300,
-	  opacity: 0.7
+      width: 350,
+      opacity: 0.8
     },
     headerText: {
       textAlign: 'center',
       fontSize: 24,
       color: '#ffffff',
-	  fontWeight: '500'
+    fontWeight: '500',
+    opacity: 0.8
 	  
     },
     content: {
       padding: 20,
-	  backgroundColor: '#7E8F92',
-	  width: 300,
-	  opacity: 0.7
+      backgroundColor: '#7E8F92',
+      width: 350,
+      opacity: 0.8
     }
   });

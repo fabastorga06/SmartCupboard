@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, FlatList, ImageBackground, View, TouchableOpacity } from 'react-native';
-import backgroundImg from '../../images/Night_sky.jpg';
+import backgroundImg from '../../images/screen7.jpg';
 import styles from '../../styles/styles';
 
 export default class Configuration extends React.Component {
