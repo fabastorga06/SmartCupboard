@@ -58,21 +58,39 @@ export default class Login extends React.Component {
 		});
 	  };
 	
-	_onLoginPress = () => {
-		const user = 'Fabian';
-		const password = 'Hola';
-	
-		if (this.state.user === user && this.state.password === password) {
+	  _handleResponse = (response) =>{
+		  
+		if (this.state.user === response[0].user && this.state.password === response[0].pass) {
 			this.props.navigation.navigate('Preview', {});
 			this.setState({
 				warningMessage: '',
 				  });
 		} else {
 		 	this.setState({
-			warningMessage: 'No existe el usuario...',
+			warningMessage: "User not founded",
 		  	});
 		}
 	}
+
+	  _executeQuery = async (query) => {
+		try{
+		  let response = await fetch(query)
+		  let resjson = await response.json()
+		  this._handleResponse(resjson) 
+		  
+		}
+		catch(error){
+			this.setState({
+				warningMessage: 'API Error',
+			});
+		}
+	}
+
+	_onLoginPress = () => {
+		this._executeQuery('http://10.0.2.2:8000/api/v1/auth?user='+this.state.user+'&pass='+this.state.password)
+	}
+
+	
 
   	render() {
     	return (

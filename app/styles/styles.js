@@ -1,5 +1,14 @@
 import { StyleSheet } from 'react-native';
 
+/*
+export const container = {
+  flex: 1,
+  width: "100%",
+  height: "100%",
+  alignItems: 'center',
+}
+*/
+
 export default StyleSheet.create({
 
     container: {
@@ -131,6 +140,18 @@ export default StyleSheet.create({
       justifyContent: 'center',
     },    
     previewBlock: {
+      justifyContent: 'center',
+      flex:1,
+      alignItems: 'center',
+      height: 60,
+      width: 200,
+      margin: 5,
+      backgroundColor: '#00BCD4',
+      opacity: 0.8,
+      borderWidth: 2,
+      borderColor: 'rgb(0, 0, 0)'
+    },
+    previewBlockConfig: {
       justifyContent: 'center',
       flex:1,
       alignItems: 'center',

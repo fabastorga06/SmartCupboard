@@ -24,16 +24,71 @@ export default class List extends React.Component {
     this.state = { 
         collapsed: true,
         GridViewItems: [
-            {key: 'Atun: Buy 2 units, Sardimar'},
-            {key: 'Arroz: Buy 1 kg, Tio Pelon'},
-            {key: 'Ketchup: Buy 1 unit, Kerns'}
+
         ]}
     }
 
-    _toggleExpanded = () => {
-        this.setState({ 
+    _handleResponseProducts = (response) =>{
+        this.setState({
+            GridViewItems: response, 
             collapsed: !(this.state.collapsed) 
         });
+	}
+
+	_executeQueryProducts = async (query) => {
+		try{
+		  let response = await fetch(query)
+		  let resjson = await response.json()
+		  this._handleResponseProducts(resjson) 
+		  
+		}
+		catch(error){
+            this.GetGridViewItem("ERROR")
+		}
+    }
+    
+    _handleResponseComplete = (response) =>{
+        this.props.navigation.navigate('MainPage', {})
+	}
+
+	_executeQueryComplete = async (query) => {
+		try{
+		  let response = await fetch(query,{method: "POST"})
+		  let resjson = await response.json()
+		  this._handleResponseComplete(resjson) 
+		  
+		}
+		catch(error){
+            this.GetGridViewItem("ERROR")
+		}
+	}
+
+    _executeQueryCheck = async (query) => {
+		try{
+		  let response = await fetch(query)
+		  let resjson = await response.json()
+		  this._handleResponseCheck(resjson) 
+		  
+		}
+		catch(error){
+            this.GetGridViewItem("ERROR")
+		}
+    }
+    
+    _handleResponseCheck = (response) =>{
+        if(response.status=="true"){
+            this.GetGridViewItem("Nothing to buy")
+        }
+        else{
+            this._executeQueryComplete('http://10.0.2.2:8000/api/v1/shopping/complete')
+        }
+	}
+    _toggleExpanded = () => {
+        this._executeQueryProducts('http://10.0.2.2:8000/api/v1/shopping/products')
+    }
+
+    _onPressComplete = () =>{
+        this._executeQueryCheck('http://10.0.2.2:8000/api/v1/shopping/check')
     }
 
     GetGridViewItem (item) {
@@ -55,15 +110,15 @@ export default class List extends React.Component {
                                 <FlatList data={ this.state.GridViewItems }
                                     renderItem={({item}) =>
                                     <View style={styles.GridViewBlock}>
-                                        <Text style={styles.GridText} 
-                                            onPress={this.GetGridViewItem.bind(this, item.key)} > {item.key}
+                                        <Text style={styles.GridText}>
+                                        {item.product}: {item.quantity} To buy
                                         </Text>
                                     </View>} numColumns={1}
                                 />
                             </View>
                         </Collapsible>
                         <View style={styles.buttonContainer}>
-                            <Text style={styles.title} onPress={()=> {this.props.navigation.navigate('MainPage', {})}}> Mark as completed </Text>
+                            <Text style={styles.title} onPress={this._onPressComplete}> Mark as completed </Text>
                         </View>
                     </View>
                 </ImageBackground>
