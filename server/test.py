@@ -1,7 +1,9 @@
 from flask import Flask
+from flask import g
 import RPi.GPIO as GPIO
 import time
 import json
+import os
 ###################################
 lights = [5,6,13]
 sensors = [4,17,27,22,10,9]
@@ -29,27 +31,33 @@ GPIO.setup(weight[4],GPIO.IN)
 
 app = Flask(__name__)
 
-@app.route('/lights/on/<int:light>')
-def turn_on(light):
-    if(light in lights):
-        GPIO.output(light,GPIO.HIGH)
-        return 'Turning on GPIO: ' + str(light)
+@app.route('/lights')
+def turn_on_off():
+    f = open("lights.txt", "r")
+    if(f.read()=='true'):
+      GPIO.output(lights[0],GPIO.HIGH)
+      GPIO.output(lights[1],GPIO.HIGH)
+      GPIO.output(lights[2],GPIO.HIGH)
+      f.close()
+      f = open("lights.txt", "w")
+      f.write("false")
+      f.close()
+      return '{"status": "On"}'
     else:
-        return 'Error'
-
-@app.route('/lights/off/<int:light>')
-def turn_off(light):
-    if(light in lights):
-        GPIO.output(light,GPIO.LOW)
-        return 'Turning off GPIO: ' + str(light)
-    else:
-        return 'Error'
+      GPIO.output(lights[0],GPIO.LOW)
+      GPIO.output(lights[1],GPIO.LOW)
+      GPIO.output(lights[2],GPIO.LOW)
+      f.close()
+      f = open("lights.txt", "w")
+      f.write("true")
+      f.close()
+      return '{"status": "Off"}'
 
 @app.route('/products')
 def value_sensors():
     response = {}
-    response['caseA'] = str(3-(GPIO.input(sensors[0])+GPIO.input(sensors[1])+GPIO.input(sensors[2])))+''
-    response['caseB'] = str(3-(GPIO.input(sensors[3])+GPIO.input(sensors[4])+GPIO.input(sensors[5])))+''
+    response['caseA'] = str(3-(GPIO.input(sensors[0])+GPIO.input(sensors[1])+GPIO.input(sensors[2])))+'units'
+    response['caseB'] = str(3-(GPIO.input(sensors[3])+GPIO.input(sensors[4])+GPIO.input(sensors[5])))+'units'
     if(GPIO.input(weight[0])==1):
         response['caseC'] = '400g'
     elif(GPIO.input(weight[1])==1):
@@ -67,8 +75,8 @@ def value_sensors():
 @app.route('/products/buy')
 def value_sensors_buy():
     response = {}
-    response['caseA'] = str((GPIO.input(sensors[0])+GPIO.input(sensors[1])+GPIO.input(sensors[2])))+''
-    response['caseB'] = str((GPIO.input(sensors[3])+GPIO.input(sensors[4])+GPIO.input(sensors[5])))+''
+    response['caseA'] = str((GPIO.input(sensors[0])+GPIO.input(sensors[1])+GPIO.input(sensors[2])))+'units'
+    response['caseB'] = str((GPIO.input(sensors[3])+GPIO.input(sensors[4])+GPIO.input(sensors[5])))+'units'
     if(GPIO.input(weight[0])==1):
         response['caseC'] = '2000g'
     elif(GPIO.input(weight[1])==1):
