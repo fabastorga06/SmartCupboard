@@ -21,7 +21,9 @@ export default class History extends React.Component {
                         onPress={()=> {this.props.navigation.navigate('Products', { list : item})}}>
                         <Text style={styles.title}>{item.date}</Text>
                       </TouchableOpacity>
-                    </View>} numColumns={1}/>
+                    </View>}
+                    keyExtractor={(item,index) => index.toString()}
+                    numColumns={1}/>
               </View>
             </View>
         </ImageBackground>

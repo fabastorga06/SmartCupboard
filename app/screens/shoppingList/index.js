@@ -98,12 +98,14 @@ export default class List extends React.Component {
             <View style={styles.content}>
               <FlatList data={ this.state.GridViewItems }
                 renderItem={({item}) =>
-            <View style={styles.GridViewBlock}>
-              <Text style={styles.GridText}>
-                {item.product}: {item.quantity} To buy
-              </Text>
-            </View>} numColumns={1}/>
-          </View>
+                <View style={styles.GridViewBlock}>
+                  <Text style={styles.GridText}>
+                  {item.product}: {item.quantity} To buy
+                  </Text>
+                </View>}
+                keyExtractor={(item,index) => index.toString()}
+                numColumns={1}/>
+            </View>
           </Collapsible>
         </View>
         <View style={styles.MainContainer}>

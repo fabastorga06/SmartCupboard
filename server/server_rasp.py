@@ -56,8 +56,8 @@ def turn_on_off():
 @app.route('/products')
 def value_sensors():
     response = {}
-    response['caseA'] = str(3-(GPIO.input(sensors[0])+GPIO.input(sensors[1])+GPIO.input(sensors[2])))+'units'
-    response['caseB'] = str(3-(GPIO.input(sensors[3])+GPIO.input(sensors[4])+GPIO.input(sensors[5])))+'units'
+    response['caseA'] = str(3-(GPIO.input(sensors[0])+GPIO.input(sensors[1])+GPIO.input(sensors[2])))+' units'
+    response['caseB'] = str(3-(GPIO.input(sensors[3])+GPIO.input(sensors[4])+GPIO.input(sensors[5])))+' units'
     if(GPIO.input(weight[0])==1):
         response['caseC'] = '400g'
     elif(GPIO.input(weight[1])==1):
@@ -75,8 +75,8 @@ def value_sensors():
 @app.route('/products/buy')
 def value_sensors_buy():
     response = {}
-    response['caseA'] = str((GPIO.input(sensors[0])+GPIO.input(sensors[1])+GPIO.input(sensors[2])))+'units'
-    response['caseB'] = str((GPIO.input(sensors[3])+GPIO.input(sensors[4])+GPIO.input(sensors[5])))+'units'
+    response['caseA'] = str((GPIO.input(sensors[0])+GPIO.input(sensors[1])+GPIO.input(sensors[2])))+' units'
+    response['caseB'] = str((GPIO.input(sensors[3])+GPIO.input(sensors[4])+GPIO.input(sensors[5])))+' units'
     if(GPIO.input(weight[0])==1):
         response['caseC'] = '2000g'
     elif(GPIO.input(weight[1])==1):

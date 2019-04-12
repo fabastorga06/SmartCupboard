@@ -82,7 +82,9 @@ export default class MainPage extends React.Component {
                       <Text style={styles.GridText}>
                         {item.product}: {item.quantity}
                       </Text>
-                    </View>} numColumns={1}/>
+                    </View>}
+                    keyExtractor={(item,index) => index.toString()}
+                    numColumns={1}/>
             </View>
           </Collapsible>
         </View>
